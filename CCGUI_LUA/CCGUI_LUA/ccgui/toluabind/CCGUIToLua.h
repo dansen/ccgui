@@ -11,10 +11,8 @@
 #include "CCGUI.h"
 #include "tolua_fix.h"
 #include "CCLuaEngine.h"
-#include "WidgetManager.h"
-#include "CCBWidget.h"
-#include "ItemBox.h"
-#include "EditBox.h"
+
+#include "CCGUI.H"
 
 int  tolua_CCGUI_open (lua_State* tolua_S);
 

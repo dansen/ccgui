@@ -1,6 +1,6 @@
 /*
 ** Lua binding: CCGUI
-** Generated automatically by tolua++-1.0.92 on Wed Apr 24 11:41:01 2013.
+** Generated automatically by tolua++-1.0.92 on Wed Apr 24 17:54:25 2013.
 */
 
 #ifndef __cplusplus
@@ -36,15 +36,15 @@ static int tolua_collect_cocos2d__CCPoint (lua_State* tolua_S)
 static void tolua_reg_types (lua_State* tolua_S)
 {
  tolua_usertype(tolua_S,"CCPoint");
- tolua_usertype(tolua_S,"ItemBox");
+ tolua_usertype(tolua_S,"ImageBox");
  tolua_usertype(tolua_S,"CCTargetedTouchDelegate");
  tolua_usertype(tolua_S,"EditBox");
  tolua_usertype(tolua_S,"TouchNode");
+ tolua_usertype(tolua_S,"ItemBox");
  tolua_usertype(tolua_S,"cocos2d::CCPoint");
- tolua_usertype(tolua_S,"cocos2d::CCSprite");
  tolua_usertype(tolua_S,"CCSize");
- tolua_usertype(tolua_S,"CCBWidget");
  tolua_usertype(tolua_S,"cocos2d::LUA_FUNCTION");
+ tolua_usertype(tolua_S,"CCBWidget");
  tolua_usertype(tolua_S,"CCNode");
  tolua_usertype(tolua_S,"Widget");
  tolua_usertype(tolua_S,"ScrollView");
@@ -147,9 +147,9 @@ static int tolua_CCGUI_TouchNode_isTouchable00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* method: enableTouch of class  TouchNode */
-#ifndef TOLUA_DISABLE_tolua_CCGUI_TouchNode_enableTouch00
-static int tolua_CCGUI_TouchNode_enableTouch00(lua_State* tolua_S)
+/* method: setTouchable of class  TouchNode */
+#ifndef TOLUA_DISABLE_tolua_CCGUI_TouchNode_setTouchable00
+static int tolua_CCGUI_TouchNode_setTouchable00(lua_State* tolua_S)
 {
 #ifndef TOLUA_RELEASE
  tolua_Error tolua_err;
@@ -165,16 +165,16 @@ static int tolua_CCGUI_TouchNode_enableTouch00(lua_State* tolua_S)
   TouchNode* self = (TouchNode*)  tolua_tousertype(tolua_S,1,0);
   bool enable = ((bool)  tolua_toboolean(tolua_S,2,0));
 #ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'enableTouch'", NULL);
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setTouchable'", NULL);
 #endif
   {
-   self->enableTouch(enable);
+   self->setTouchable(enable);
   }
  }
  return 0;
 #ifndef TOLUA_RELEASE
  tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'enableTouch'.",&tolua_err);
+ tolua_error(tolua_S,"#ferror in function 'setTouchable'.",&tolua_err);
  return 0;
 #endif
 }
@@ -652,71 +652,6 @@ static int tolua_CCGUI_Widget_removeWidget00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* method: setBackSprite of class  Widget */
-#ifndef TOLUA_DISABLE_tolua_CCGUI_Widget_setBackSprite00
-static int tolua_CCGUI_Widget_setBackSprite00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,2,"cocos2d::CCSprite",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  Widget* self = (Widget*)  tolua_tousertype(tolua_S,1,0);
-  cocos2d::CCSprite* sprite = ((cocos2d::CCSprite*)  tolua_tousertype(tolua_S,2,0));
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setBackSprite'", NULL);
-#endif
-  {
-   self->setBackSprite(sprite);
-  }
- }
- return 0;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'setBackSprite'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: getBackSprite of class  Widget */
-#ifndef TOLUA_DISABLE_tolua_CCGUI_Widget_getBackSprite00
-static int tolua_CCGUI_Widget_getBackSprite00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  Widget* self = (Widget*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getBackSprite'", NULL);
-#endif
-  {
-   cocos2d::CCSprite* tolua_ret = (cocos2d::CCSprite*)  self->getBackSprite();
-    tolua_pushusertype(tolua_S,(void*)tolua_ret,"cocos2d::CCSprite");
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'getBackSprite'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* function: widget_manager_init */
 #ifndef TOLUA_DISABLE_tolua_CCGUI_widget_manager_init00
 static int tolua_CCGUI_widget_manager_init00(lua_State* tolua_S)
@@ -769,6 +704,134 @@ static int tolua_CCGUI_widget_manager_release00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'widget_manager_release'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: create of class  ImageBox */
+#ifndef TOLUA_DISABLE_tolua_CCGUI_ImageBox_create00
+static int tolua_CCGUI_ImageBox_create00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"ImageBox",0,&tolua_err) ||
+     !tolua_iscppstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  std::string name = ((std::string)  tolua_tocppstring(tolua_S,2,0));
+  {
+   ImageBox* tolua_ret = (ImageBox*)  ImageBox::create(name);
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"ImageBox");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'create'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setContentSize of class  ImageBox */
+#ifndef TOLUA_DISABLE_tolua_CCGUI_ImageBox_setContentSize00
+static int tolua_CCGUI_ImageBox_setContentSize00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"ImageBox",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"const CCSize",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  ImageBox* self = (ImageBox*)  tolua_tousertype(tolua_S,1,0);
+  const CCSize* contentSize = ((const CCSize*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setContentSize'", NULL);
+#endif
+  {
+   self->setContentSize(*contentSize);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setContentSize'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setBackSprite of class  ImageBox */
+#ifndef TOLUA_DISABLE_tolua_CCGUI_ImageBox_setBackSprite00
+static int tolua_CCGUI_ImageBox_setBackSprite00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"ImageBox",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,2,"CCNode",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  ImageBox* self = (ImageBox*)  tolua_tousertype(tolua_S,1,0);
+  CCNode* sprite = ((CCNode*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setBackSprite'", NULL);
+#endif
+  {
+   self->setBackSprite(sprite);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setBackSprite'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getBackSprite of class  ImageBox */
+#ifndef TOLUA_DISABLE_tolua_CCGUI_ImageBox_getBackSprite00
+static int tolua_CCGUI_ImageBox_getBackSprite00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"ImageBox",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  ImageBox* self = (ImageBox*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getBackSprite'", NULL);
+#endif
+  {
+   CCNode* tolua_ret = (CCNode*)  self->getBackSprite();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCNode");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getBackSprite'.",&tolua_err);
  return 0;
 #endif
 }
@@ -1312,7 +1375,7 @@ TOLUA_API int tolua_CCGUI_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setName",tolua_CCGUI_TouchNode_setName00);
    tolua_function(tolua_S,"getName",tolua_CCGUI_TouchNode_getName00);
    tolua_function(tolua_S,"isTouchable",tolua_CCGUI_TouchNode_isTouchable00);
-   tolua_function(tolua_S,"enableTouch",tolua_CCGUI_TouchNode_enableTouch00);
+   tolua_function(tolua_S,"setTouchable",tolua_CCGUI_TouchNode_setTouchable00);
    tolua_variable(tolua_S,"__CCTargetedTouchDelegate__",tolua_get_TouchNode___CCTargetedTouchDelegate__,NULL);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"Widget","Widget","TouchNode",NULL);
@@ -1331,11 +1394,16 @@ TOLUA_API int tolua_CCGUI_open (lua_State* tolua_S)
    tolua_function(tolua_S,"isChildOf",tolua_CCGUI_Widget_isChildOf00);
    tolua_function(tolua_S,"addWidget",tolua_CCGUI_Widget_addWidget00);
    tolua_function(tolua_S,"removeWidget",tolua_CCGUI_Widget_removeWidget00);
-   tolua_function(tolua_S,"setBackSprite",tolua_CCGUI_Widget_setBackSprite00);
-   tolua_function(tolua_S,"getBackSprite",tolua_CCGUI_Widget_getBackSprite00);
   tolua_endmodule(tolua_S);
   tolua_function(tolua_S,"widget_manager_init",tolua_CCGUI_widget_manager_init00);
   tolua_function(tolua_S,"widget_manager_release",tolua_CCGUI_widget_manager_release00);
+  tolua_cclass(tolua_S,"ImageBox","ImageBox","Widget",NULL);
+  tolua_beginmodule(tolua_S,"ImageBox");
+   tolua_function(tolua_S,"create",tolua_CCGUI_ImageBox_create00);
+   tolua_function(tolua_S,"setContentSize",tolua_CCGUI_ImageBox_setContentSize00);
+   tolua_function(tolua_S,"setBackSprite",tolua_CCGUI_ImageBox_setBackSprite00);
+   tolua_function(tolua_S,"getBackSprite",tolua_CCGUI_ImageBox_getBackSprite00);
+  tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"CCBWidget","CCBWidget","Widget",NULL);
   tolua_beginmodule(tolua_S,"CCBWidget");
    tolua_function(tolua_S,"create",tolua_CCGUI_CCBWidget_create00);

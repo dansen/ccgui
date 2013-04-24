@@ -19,7 +19,7 @@
 #include "EditBox.h"
 #include "MultiListBox.h"
 #include "ListBox.h"
-
+#include "ImageBox.h"
 #include "CCBWidget.h"
 
 #endif

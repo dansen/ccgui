@@ -25,7 +25,7 @@ bool TextBox::init()
     Widget::init();
     this->addChild(m_label);
     //default, TextBox does't accept touch event,call enableTouch(true) to accept touch^_^.
-    enableTouch(false);
+    setTouchable(false);
     return true;
 }
 

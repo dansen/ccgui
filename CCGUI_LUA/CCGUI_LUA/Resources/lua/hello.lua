@@ -9,16 +9,17 @@ local function main()
 
 	ccb:get("btnClose"):touchBegin(
 		function(node, touch)
-			ccb:removeFromParentAndCleanup(true)
+			--ccb:removeFromParentAndCleanup(true)
+			widget_manager_release()
 		end
 	)
 	local box = ccb:get("scrollContent")
 	tolua.cast(box, "ItemBox")
 
     for i=1,10 do 
-        local item = CCBWidget:create("item"..i, "CCB/shop/DanyaoNode.ccb")
-		item:setContentSize(CCSize(510,130))
-        box:addItem(item)
+        --local item = CCBWidget:create("item"..i, "CCB/shop/DanyaoNode.ccb")
+		--item:setContentSize(CCSize(510,130))
+        --box:addItem(item)
     end
     
 	local editNode = ccb:get("editBox")

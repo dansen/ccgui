@@ -29,6 +29,28 @@ bool ScrollView::init()
     return true;
 }
 
+ScrollView * ScrollView::create(std::string name)
+{
+    ScrollView * view = new ScrollView();
+    if(view && view->init()){
+        view->setName(name);
+        view->autorelease();
+        return view;
+    }
+    delete view;
+    return view;
+}
+
+ScrollView * ScrollView::create(std::string name, cocos2d::CCPoint position, cocos2d::CCSize contentSize)
+{
+    ScrollView * view = create(name);
+    if(view){
+        view->setPosition(position);
+        view->setContentSize(contentSize);
+    }
+    return view;
+}
+
 //the ScrollView content size is the CCScrollView's view size
 void ScrollView::setContentSize(const cocos2d::CCSize &contentSize)
 {

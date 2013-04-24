@@ -19,7 +19,6 @@ Widget::Widget():
 m_backLayer(0),
 #endif
 m_treeLevel(0),
-m_backSprite(0),
 m_frontable(false),
 m_luaTouchBeginHandle(0),
 m_luaTouchMoveHandle(0),
@@ -51,8 +50,30 @@ void Widget::removeWidget(Widget* child)
         if(child == *itr){
             m_children.erase(itr);
             CCNode::removeChild(child, true);
+            break;
         }
     }
+}
+
+void Widget::replaceWidget(Widget * oldWidget,  Widget * newWidget)
+{
+    for(CHILDREN_ITR itr = m_children.begin(); itr != m_children.end(); ++itr){
+        if(*itr == oldWidget){
+            //(1)add newWidget into children
+            m_children.insert(itr, newWidget);
+            //(2)assign properties
+            newWidget->m_parentWidget = this;
+            newWidget->setTreeLevel(this->m_treeLevel + 1);
+            newWidget->setTag(oldWidget->getTag());
+            newWidget->setPosition(oldWidget->getPosition());
+            newWidget->setContentSize(oldWidget->getContentSize());
+            CCNode::addChild(newWidget, oldWidget->getZOrder());
+            //(3)remove old
+            removeWidget(oldWidget);
+            break;
+        }
+    }
+    
 }
 
 void Widget::active()
@@ -216,6 +237,17 @@ Widget * Widget::create(std::string name, cocos2d::CCPoint position, cocos2d::CC
     return widget;
 }
 
+void Widget::release()
+{
+    //release all its children
+    for(CHILDREN_ITR itr = m_children.begin(); itr != m_children.end(); ++itr){
+        (*itr)->release();
+    }
+    m_children.clear();
+    //release myself
+    CCNode::removeFromParentAndCleanup(true);
+}
+
 bool Widget::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     //
@@ -316,24 +348,6 @@ void Widget::setPosition (const cocos2d::CCPoint &position)
     CCNode::setPosition(position);
 }
 
-void Widget::setBackSprite(cocos2d::CCNode * sprite)
-{
-    assert(sprite->getParent() == NULL);
-    if(m_backSprite){
-        m_backSprite->removeFromParentAndCleanup(true);
-    }
-    
-    m_backSprite = sprite;
-    CCSize size = getContentSize();
-    sprite->setPosition(CCPointMake(size.width/2, size.height/2));
-    CCNode::addChild(m_backSprite);
-}
-
-cocos2d::CCNode * Widget::getBackSprite()
-{
-    return m_backSprite;
-}
-
 void Widget::setContentSize(const cocos2d::CCSize &contentSize)
 {
 #ifdef CCGUI_DEBUG
@@ -342,11 +356,6 @@ void Widget::setContentSize(const cocos2d::CCSize &contentSize)
         m_backLayer->setContentSize(contentSize);
     }
 #endif
-    
-    if(m_backSprite){
-        m_backSprite->setPosition(CCPointMake(contentSize.width/2, contentSize.height/2));
-    }
-    
     //
     CCNode::setContentSize(contentSize);
 }

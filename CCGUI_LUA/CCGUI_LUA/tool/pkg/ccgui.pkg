@@ -5,31 +5,39 @@ class TouchNode : public CCNode,public CCTargetedTouchDelegate
 	void setName(std::string name);
 	std::string getName();
     bool isTouchable();
-    void enableTouch(bool enable);
+    void setTouchable(bool enable);
 }
 
 class Widget : public TouchNode
 {
 	Widget * getParentWidget();
 	Widget * get(const char * name);
-	void touchBegin(cocos2d::LUA_FUNCTION handle);
-	void touchMove(cocos2d::LUA_FUNCTION handle);
-	void touchEnd(cocos2d::LUA_FUNCTION handle);
-	void touchCancel(cocos2d::LUA_FUNCTION handle);
+	void touchBegin(LUA_FUNCTION handle);
+	void touchMove(LUA_FUNCTION handle);
+	void touchEnd(LUA_FUNCTION handle);
+	void touchCancel(LUA_FUNCTION handle);
     bool isFrontable(); 
     void enableFront(bool enable);
     static Widget * create(std::string name);
     virtual void setPosition (const CCPoint &position);
     virtual void setContentSize(const CCSize &contentSize);
     bool isChildOf(Widget * parent);
+
+	void replaceWidget(Widget * oldWidget, Widget * newWidget);
     virtual void addWidget(Widget * child);
     void removeWidget(Widget* child);
-    void setBackSprite(cocos2d::CCSprite * sprite);
-    cocos2d::CCSprite * getBackSprite();
 }
 
 Widget * widget_manager_init(CCNode * node, int zorder);
 void widget_manager_release();
+
+class ImageBox:public Widget
+{
+	static ImageBox * create(std::string name);
+	virtual void setContentSize(const CCSize &contentSize);
+	void setBackSprite(CCNode * sprite);
+	CCNode * getBackSprite();
+}
 
 class CCBWidget: public Widget
 {
@@ -51,6 +59,7 @@ class ScrollView:public Widget
 
 class ItemBox : public ScrollView
 {
+	static ItemBox * create(std::string name);
 	virtual void setContentSize(const CCSize &contentSize);
 	void addItem(Widget * item);
 	void removeItem(int index);

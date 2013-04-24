@@ -26,7 +26,7 @@ class TouchNode : public cocos2d::CCNode,public cocos2d::CCTargetedTouchDelegate
 {
 public:
     bool isTouchable(); //是否接受点击
-    void enableTouch(bool enable);
+    void setTouchable(bool enable);
 public:
     virtual void onEnter();
     virtual void onExit();

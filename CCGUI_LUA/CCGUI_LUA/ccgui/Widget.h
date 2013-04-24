@@ -46,11 +46,16 @@ public:
     virtual void touchEnd(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     virtual void touchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     virtual void touchMove(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+protected:
+    Widget();
+public:
+    virtual ~Widget();
 public:
     static Widget * create();
     static Widget * create(std::string name);
     static Widget * create(std::string name, cocos2d::CCPoint position, cocos2d::CCSize contentSize);
-    ~Widget();
+public:
+    virtual void release();
 public:
     virtual void setPosition (const cocos2d::CCPoint &position);
     virtual void setContentSize(const cocos2d::CCSize &contentSize);
@@ -60,13 +65,8 @@ public:
     //add child
     virtual void addWidget(Widget * child);
     void removeWidget(Widget* child);
+    void replaceWidget(Widget * oldWidget, Widget * newWidget);
     virtual void active();
-    //sprite texture
-    void setBackSprite(cocos2d::CCNode * sprite);
-    cocos2d::CCNode * getBackSprite();
-    //
-protected:
-    Widget();
 protected:
     bool init();
     void reorderWidgets();
@@ -80,7 +80,7 @@ private:
 #ifdef CCGUI_DEBUG
     cocos2d::CCLayerGradient * m_backLayer;
 #endif
-    cocos2d::CCNode * m_backSprite;
+    
     int m_treeLevel;
     CC_SYNTHESIZE(Widget * , m_parentWidget, ParentWidget);
     std::list<Widget *> m_children;

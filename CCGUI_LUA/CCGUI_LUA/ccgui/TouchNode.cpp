@@ -35,7 +35,7 @@ bool TouchNode::isTouchable()
     return m_touchable;
 }
 
-void TouchNode::enableTouch(bool enable)
+void TouchNode::setTouchable(bool enable)
 {
     m_touchable = enable;
 }
