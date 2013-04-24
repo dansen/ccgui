@@ -1,6 +1,6 @@
 //
 //  CCUtil.cpp
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-3-20.
 //

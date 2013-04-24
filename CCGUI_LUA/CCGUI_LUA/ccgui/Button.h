@@ -1,13 +1,13 @@
 //
 //  Button.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //
 //
 
-#ifndef __BodhiShoot__Button__
-#define __BodhiShoot__Button__
+#ifndef __CCGUI__Button__
+#define __CCGUI__Button__
 
 #include "Widget.h"
 _CCGUI_NAMESPACE_BEGIN

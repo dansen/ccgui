@@ -1,13 +1,13 @@
 //
 //  TouchNode.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //
 //
 
-#ifndef __BodhiShoot__TouchNode__
-#define __BodhiShoot__TouchNode__
+#ifndef __CCGUI__TouchNode__
+#define __CCGUI__TouchNode__
 
 #include "CCGUIDef.h"
 #include "CCGUIObjectZeroInit.h"
@@ -55,4 +55,4 @@ public:
 _CCGUI_NAMESPACE_END
 
 
-#endif /* defined(__BodhiShoot__TouchNode__) */
+#endif /* defined(__CCGUI__TouchNode__) */

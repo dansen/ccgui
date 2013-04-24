@@ -1,13 +1,13 @@
 //
 //  EditBox.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //
 //
 
-#ifndef __BodhiShoot__EditBox__
-#define __BodhiShoot__EditBox__
+#ifndef __CCGUI__EditBox__
+#define __CCGUI__EditBox__
 
 #include "CCGUIDef.h"
 #include "Widget.h"

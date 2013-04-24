@@ -1,13 +1,13 @@
 //
 //  Widget.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //
 //
 
-#ifndef __BodhiShoot__Widget__
-#define __BodhiShoot__Widget__
+#ifndef __CCGUI__Widget__
+#define __CCGUI__Widget__
 
 #include "TouchNode.h"
 

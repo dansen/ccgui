@@ -1,13 +1,13 @@
 //
 //  TextBox.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //
 //
 
-#ifndef __BodhiShoot__TextBox__
-#define __BodhiShoot__TextBox__
+#ifndef __CCGUI__TextBox__
+#define __CCGUI__TextBox__
 
 #include "Widget.h"
 
@@ -42,4 +42,4 @@ private:
 
 _CCGUI_NAMESPACE_END
 
-#endif /* defined(__BodhiShoot__TextBox__) */
+#endif /* defined(__CCGUI__TextBox__) */

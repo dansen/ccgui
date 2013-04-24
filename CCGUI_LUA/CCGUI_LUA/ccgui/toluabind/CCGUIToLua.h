@@ -1,13 +1,13 @@
 //
 //  BSToLua.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by fonzie on 13-1-28.
 //
 //
 
-#ifndef BodhiShoot_BSToLua_h
-#define BodhiShoot_BSToLua_h
+#ifndef CCGUI_BSToLua_h
+#define CCGUI_BSToLua_h
 #include "CCGUI.h"
 #include "tolua_fix.h"
 #include "CCLuaEngine.h"

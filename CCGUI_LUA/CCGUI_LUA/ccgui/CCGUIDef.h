@@ -5,8 +5,8 @@
 //  Created by dansen on 13-4-19.
 //
 //
-#ifndef BodhiShoot_CCGUIDEF_h
-#define BodhiShoot_CCGUIDEF_h
+#ifndef CCGUI_CCGUIDEF_h
+#define CCGUI_CCGUIDEF_h
 
 #include <string>
 #include <vector>

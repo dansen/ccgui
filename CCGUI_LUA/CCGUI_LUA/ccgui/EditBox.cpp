@@ -1,6 +1,6 @@
 //
 //  EditBox.cpp
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //

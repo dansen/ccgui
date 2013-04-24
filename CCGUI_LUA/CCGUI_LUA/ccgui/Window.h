@@ -1,13 +1,13 @@
 //
 //  Window.h
-//  BodhiShoot
+//  CCGUI
 //
 //  Created by dansen on 13-4-19.
 //
 //
 
-#ifndef __BodhiShoot__Window__
-#define __BodhiShoot__Window__
+#ifndef __CCGUI__Window__
+#define __CCGUI__Window__
 
 #include <iostream>
 
