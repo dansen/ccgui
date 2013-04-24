@@ -1,0 +1,34 @@
+
+<project name="CCGUIToLua" default="create-lua-bindings" basedir=".">
+    <description>
+        Utilises tolua++ to create the lua bindings to expose game functionality to lua
+    </description>
+    <property name="tolua++" location="/usr/local/bin/tolua++"/>
+	<property name="Tranform" location="Transform"/>
+
+  <target name="cocos2d-x-bindings">
+    <echo message="Calling tolua++" />
+    <exec executable="${tolua++}">
+      <arg value="-o"/>
+	  <arg value="CCGUIToLua.cpp"/>
+      <arg value="-n"/>
+	  <arg value="CCGUI"/>
+	  <arg value="ccgui.pkg"/>
+    </exec>
+
+	<replace file="CCGUIToLua.cpp"><replacetoken><![CDATA[#include "CCGUIToLua.h"]]></replacetoken><replacevalue><![CDATA[
+#include "CCGUIToLua.h"
+using namespace CCGUI;
+using namespace cocos2d;
+using namespace cocos2d::extension;
+			]]></replacevalue></replace>
+
+    <echo message="Transfrom LUA_FUNCTION into function reference..." />
+	<exec executable="bash" >
+		<arg value="transform.sh" />
+	</exec>
+    <echo message="Copying new bindings to target location" />
+	<copy file="CCGUIToLua.cpp" todir="../../ccgui/toluabind/"/>
+  </target>
+  <target name="create-lua-bindings" depends="cocos2d-x-bindings" />
+</project>

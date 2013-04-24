@@ -1,0 +1,66 @@
+$#include "CCGUIToLua.h"
+
+class TouchNode : public CCNode,public CCTargetedTouchDelegate
+{
+	void setName(std::string name);
+	std::string getName();
+    bool isTouchable();
+    void enableTouch(bool enable);
+}
+
+class Widget : public TouchNode
+{
+	Widget * getParentWidget();
+	Widget * get(const char * name);
+	void touchBegin(cocos2d::LUA_FUNCTION handle);
+	void touchMove(cocos2d::LUA_FUNCTION handle);
+	void touchEnd(cocos2d::LUA_FUNCTION handle);
+	void touchCancel(cocos2d::LUA_FUNCTION handle);
+    bool isFrontable(); 
+    void enableFront(bool enable);
+    static Widget * create(std::string name);
+    virtual void setPosition (const CCPoint &position);
+    virtual void setContentSize(const CCSize &contentSize);
+    bool isChildOf(Widget * parent);
+    virtual void addWidget(Widget * child);
+    void removeWidget(Widget* child);
+    void setBackSprite(cocos2d::CCSprite * sprite);
+    cocos2d::CCSprite * getBackSprite();
+}
+
+Widget * widget_manager_init(CCNode * node, int zorder);
+void widget_manager_release();
+
+class CCBWidget: public Widget
+{
+	static CCBWidget * create(std::string name, const char * filename);
+}
+
+class ScrollView:public Widget
+{
+	virtual void setContentSize(const CCSize &contentSize);
+	Widget * getCanvas();
+	void setCanvas(Widget * canvas);
+	void setViewOffset(CCPoint point);
+	cocos2d::CCPoint getViewOffset();
+	void	setVisibleVScroll(bool _value);
+	bool	isVisibleVScroll();
+	void	setVisibleHScroll(bool _value);
+	bool	isVisibleHScroll();
+}
+
+class ItemBox : public ScrollView
+{
+	virtual void setContentSize(const CCSize &contentSize);
+	void addItem(Widget * item);
+	void removeItem(int index);
+	void setCaption(std::string item);
+}
+
+class EditBox : public Widget
+{
+	static EditBox * create(std::string name);
+	static EditBox * create(std::string name, CCPoint position, CCSize contentSize);
+}
+
+

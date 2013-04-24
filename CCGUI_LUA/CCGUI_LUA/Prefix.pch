@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'CCGUI_LUA' target in the 'CCGUI_LUA' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+#endif
