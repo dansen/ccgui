@@ -27,7 +27,7 @@ m_luaTouchCancelHandle(0),
 m_type(WT_WIDGET),
 m_parentWidget(NULL)
 {
-    
+    setTouchable(false);
 }
 
 Widget::~Widget()
@@ -155,21 +155,25 @@ bool Widget::init()
 
 void Widget::touchBegin(cocos2d::LUA_FUNCTION handle)
 {
+    setTouchable(true);
     m_luaTouchBeginHandle = handle;
 }
 
 void Widget::touchEnd(cocos2d::LUA_FUNCTION handle)
 {
+    setTouchable(true);
     m_luaTouchEndHandle = handle;
 }
 
 void Widget::touchMove(cocos2d::LUA_FUNCTION handle)
 {
+    setTouchable(true);
     m_luaTouchMoveHandle = handle;
 }
 
 void Widget::touchCancel(cocos2d::LUA_FUNCTION handle)
 {
+    setTouchable(true);
     m_luaTouchCancelHandle = handle;
 }
 
@@ -206,11 +210,6 @@ bool Widget::isFrontable()
 void Widget::enableFront(bool enable)
 {
     m_frontable = enable;
-}
-
-Widget * Widget::create()
-{
-    return create("widget");
 }
 
 Widget * Widget::create(string name)
@@ -322,25 +321,36 @@ static void touch(int handler,Widget * widget, cocos2d::CCTouch *pTouch, cocos2d
 void Widget::touchBegin(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     printf("touch begin %s...\n", getName().c_str());
-    touch(m_luaTouchBeginHandle, this, pTouch, pEvent);
+    if(m_luaTouchBeginHandle){
+        touch(m_luaTouchBeginHandle, this, pTouch, pEvent);
+    }
 }
 
 void Widget::touchEnd(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     printf("touch end %s...\n", getName().c_str());
-    touch(m_luaTouchEndHandle, this, pTouch, pEvent);
+    if(m_luaTouchEndHandle){
+        touch(m_luaTouchEndHandle, this, pTouch, pEvent);
+    }
+    
 }
 
 void Widget::touchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     printf("touch cancel %s...\n", getName().c_str());
-    touch(m_luaTouchCancelHandle, this, pTouch, pEvent);
+    if(m_luaTouchCancelHandle){
+        touch(m_luaTouchCancelHandle, this, pTouch, pEvent);
+    }
+    
 }
 
 void Widget::touchMove(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     printf("touch move %s...\n", getName().c_str());
-    touch(m_luaTouchMoveHandle, this, pTouch, pEvent);
+    if(m_luaTouchMoveHandle){
+        touch(m_luaTouchMoveHandle, this, pTouch, pEvent);
+    }
+    
 }
 
 void Widget::setPosition (const cocos2d::CCPoint &position)

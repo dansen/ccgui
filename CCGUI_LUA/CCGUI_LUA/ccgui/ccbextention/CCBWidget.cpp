@@ -12,6 +12,7 @@
 #include "CCBFile.h"
 #include "TextBox.h"
 #include "ImageBox.h"
+#include "Window.h"
 using namespace cocos2d;
 _CCGUI_NAMESPACE_BEGIN
 
@@ -63,7 +64,11 @@ static Widget * _createFromNode(CCBNode * node)
     }else if(type == CT_NODE){
         widget = Widget::create(node->displayName.c_str());
     }else if(type == CT_LAYER){
-        widget = Widget::create(node->displayName.c_str());
+        widget = Window::create(node->displayName.c_str());
+        widget->setContentSize(CCSizeMake(node->property->sx, node->property->sy));
+        widget->setAnchorPoint(CCPointMake(node->property->anchorX, node->property->anchorY));
+        widget->setPosition(CCPointMake(node->property->x, node->property->y));
+        widget->ignoreAnchorPointForPosition(true);
     }else if(type == CT_SPRITE9){
         widget = ImageBox::create(node->displayName.c_str());
         

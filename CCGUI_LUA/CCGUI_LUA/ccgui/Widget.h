@@ -51,7 +51,6 @@ protected:
 public:
     virtual ~Widget();
 public:
-    static Widget * create();
     static Widget * create(std::string name);
     static Widget * create(std::string name, cocos2d::CCPoint position, cocos2d::CCSize contentSize);
 public:

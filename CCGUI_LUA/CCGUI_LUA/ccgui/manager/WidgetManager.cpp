@@ -150,6 +150,7 @@ void WidgetManager::touchMove(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent
 Widget * WidgetManager::init(CCNode * node, int zorder)
 {
     m_rootWidget = Widget::create("root");
+    m_rootWidget->setTouchable(true);
     //the root handle the touch event last
     m_rootWidget->setPriority(CPRI_LOWEST);
     m_activeWidget = 0;
@@ -159,7 +160,8 @@ Widget * WidgetManager::init(CCNode * node, int zorder)
 
 void WidgetManager::release()
 {
-    delete this;
+    m_rootWidget->release();
+    m_rootWidget = NULL;
 }
 
 _CCGUI_NAMESPACE_END

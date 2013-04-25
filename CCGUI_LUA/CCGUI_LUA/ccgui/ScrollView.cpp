@@ -13,6 +13,7 @@ _CCGUI_NAMESPACE_BEGIN
 
 ScrollView::ScrollView()
 {
+    setTouchable(true);
     m_type = WT_SCROLL_VIEW;
 }
 
