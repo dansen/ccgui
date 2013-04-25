@@ -35,6 +35,14 @@ Widget::~Widget()
     printf("widget %s destroyed.\n", getName().c_str());
 }
 
+void Widget::clearWidgets()
+{
+    //release all its children
+    for(CHILDREN_ITR itr = m_children.begin(); itr != m_children.end(); ++itr){
+        (*itr)->release();
+    }
+    m_children.clear();
+}
 
 void Widget::addWidget(Widget * child)
 {
@@ -314,7 +322,10 @@ static void touch(int handler,Widget * widget, cocos2d::CCTouch *pTouch, cocos2d
         cocos2d::CCLuaEngine * lua = cocos2d::CCLuaEngine::defaultEngine();
         lua->pushCCObject(widget, "Widget");
         lua->pushCCObject(pTouch, "CCTouch");
-        lua->executeFunctionByHandler(handler, 2);
+        CCPoint p = widget->getParent()->convertTouchToNodeSpace(pTouch);
+        lua->pushFloat(p.x);
+        lua->pushFloat(p.y);
+        lua->executeFunctionByHandler(handler, 4);
     }
 }
 

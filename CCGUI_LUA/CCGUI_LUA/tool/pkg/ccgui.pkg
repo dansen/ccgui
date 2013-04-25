@@ -25,7 +25,8 @@ class Widget : public TouchNode
 
 	void replaceWidget(Widget * oldWidget, Widget * newWidget);
     virtual void addWidget(Widget * child);
-    void removeWidget(Widget* child);
+    virtual void removeWidget(Widget* child);
+	virtual void clearWidgets();
 }
 
 Widget * widget_manager_init(CCNode * node, int zorder);
@@ -50,7 +51,7 @@ class ScrollView:public Widget
 	Widget * getCanvas();
 	void setCanvas(Widget * canvas);
 	void setViewOffset(CCPoint point);
-	cocos2d::CCPoint getViewOffset();
+	CCPoint getViewOffset();
 	void	setVisibleVScroll(bool _value);
 	bool	isVisibleVScroll();
 	void	setVisibleHScroll(bool _value);
@@ -63,7 +64,24 @@ class ItemBox : public ScrollView
 	virtual void setContentSize(const CCSize &contentSize);
 	void addItem(Widget * item);
 	void removeItem(int index);
+	void clearItems();
 	void setCaption(std::string item);
+}
+
+class TextBox:public Widget
+{
+	void setText(const char * text);
+	const char* getText();
+	void setFontName (const char* fontName);
+	const char*		getFontName ();
+	void setFontSize(int _value);
+	int	getFontSize();
+	void setTextAlign(CCTextAlignment align);
+	CCTextAlignment	getTextAlign();
+	void setTextVAlign(CCVerticalTextAlignment align);
+	CCVerticalTextAlignment getTextVAlign();
+	void setTextColor(const ccColor3B &_value);
+	const ccColor3B getTextColour();
 }
 
 class EditBox : public Widget

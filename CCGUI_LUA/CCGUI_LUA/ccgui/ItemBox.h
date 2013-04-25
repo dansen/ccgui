@@ -24,8 +24,10 @@ private:
     bool init();
 public:
     virtual void setContentSize(const cocos2d::CCSize &contentSize);
+    
     void addItem(Widget * item);
     void removeItem(int index);
+    void clearItems();
     void setCaption(std::string item);
 private:
     void updateCanvas();

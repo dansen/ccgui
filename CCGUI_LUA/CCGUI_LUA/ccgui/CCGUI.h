@@ -21,5 +21,6 @@
 #include "ListBox.h"
 #include "ImageBox.h"
 #include "CCBWidget.h"
+#include "TextBox.h"
 
 #endif

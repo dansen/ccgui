@@ -63,7 +63,8 @@ public:
     bool isChildOf(Widget * parent);
     //add child
     virtual void addWidget(Widget * child);
-    void removeWidget(Widget* child);
+    virtual void removeWidget(Widget* child);
+    virtual void clearWidgets();
     void replaceWidget(Widget * oldWidget, Widget * newWidget);
     virtual void active();
 protected:

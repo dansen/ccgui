@@ -18,7 +18,6 @@ class TextBox:public Widget
 public:
     virtual void setContentSize(const cocos2d::CCSize &contentSize);
 public:
-    bool init();
     void setText(const char * text);
     const char* getText();
     void 	setFontName (const char* fontName);
@@ -34,6 +33,8 @@ public:
     
     void 	setTextColor(const cocos2d::ccColor3B &_value);
     const cocos2d::ccColor3B getTextColour();
+private:
+    bool init();
 public:
     static TextBox * create(std::string name);
 private:

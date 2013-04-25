@@ -87,6 +87,13 @@ void ItemBox::addItem(Widget * item)
     updateCanvas();
 }
 
+void ItemBox::clearItems()
+{
+    m_canvas->clearWidgets();
+    m_items.clear();
+    updateCanvas();
+}
+
 void ItemBox::removeItem(int index)
 {
     
