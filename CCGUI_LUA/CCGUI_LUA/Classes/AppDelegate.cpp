@@ -58,9 +58,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCGUI::TextBox * text = CCGUI::TextBox::create("hello world");
     text->setPosition(CCPointMake(size.width/2+400, size.height/2));
     //
-    CCGUI::MultiListBox * multiList = CCGUI::MultiListBox::create("multilist", 2, 2);
+    CCGUI::MultiListBox * multiList = CCGUI::MultiListBox::create("multilist", 2, 12);
     multiList->setPosition(CCPointMake(size.width/2-300, size.height/2));
-    
+    multiList->setContentSize(CCSizeMake(300, 400));
     multiList->setItem("hifsd", 0, 0);
     root->addWidget(multiList);
     root->addWidget(text);
