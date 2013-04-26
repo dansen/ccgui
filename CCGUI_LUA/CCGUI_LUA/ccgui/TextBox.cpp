@@ -24,8 +24,6 @@ bool TextBox::init()
     m_label->setAnchorPoint(CCPointMake(0, 0));
     Widget::init();
     this->addChild(m_label);
-    //default, TextBox does't accept touch event,call enableTouch(true) to accept touch^_^.
-    setTouchable(false);
     return true;
 }
 

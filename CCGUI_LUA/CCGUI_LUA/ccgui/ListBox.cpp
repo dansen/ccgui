@@ -32,6 +32,8 @@ bool ListBox::init()
     ScrollView::init();
     //set canvas
     ScrollView::setCanvas(CCGUI::Widget::create("canvas for list box"));
+    //
+    ScrollView::setDirection(extension::kCCScrollViewDirectionVertical);
     return true;
 }
 
@@ -61,6 +63,7 @@ void ListBox::setContentSize(const cocos2d::CCSize &contentSize)
 {
     m_itemSize = CCSizeMake(contentSize.width, m_itemSize.height);
     ScrollView::setContentSize(contentSize);
+    updateCanvas();
 }
 
 void ListBox::setItemHeight(int height)

@@ -10,6 +10,10 @@
 #include "WidgetManager.h"
 #include "CCGUIUtil.h"
 
+#define WIDGET_DEFAULT_WIDTH 102
+#define WIDGET_DEFAULT_HEIGHT 77
+
+
 _CCGUI_NAMESPACE_BEGIN
 using namespace cocos2d;
 using namespace std;
@@ -148,11 +152,11 @@ bool Widget::init()
 {
     //set size
     this->setAnchorPoint(CCPointMake(0.5f, 0.5f));
-    this->setContentSize(cocos2d::CCSizeMake(0, 0));
+    this->setContentSize(cocos2d::CCSizeMake(WIDGET_DEFAULT_WIDTH, WIDGET_DEFAULT_HEIGHT));
     //init back with gray
 #ifdef CCGUI_DEBUG
-    int alpha = 50;
-    m_backLayer = cocos2d::CCLayerGradient::create(cocos2d::ccc4(255, 255, 255, alpha), cocos2d::ccc4(100, 100,100, alpha));
+    int alpha = 255;
+    m_backLayer = cocos2d::CCLayerGradient::create(cocos2d::ccc4(255, 255, 255, alpha), cocos2d::ccc4(100, 0,100, alpha));
     m_backLayer->setContentSize(getContentSize());
     m_backLayer->setAnchorPoint(CCPointMake(0.5f, 0.5f));
     this->addChild(m_backLayer);
