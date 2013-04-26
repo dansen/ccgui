@@ -17,11 +17,10 @@ class TextBox;
 class MultiListBox : public ScrollView
 {
 public:
-    //MultiListBox is ListBox by default.
     static MultiListBox * create(const std::string & name, int columnCount, int rowCount);
 public:
     virtual void setContentSize(const cocos2d::CCSize &contentSize);
-	//add a column
+    //add a column
     void addColumn(const std::string & head, int width);
     void addRow();
     //set value at (row,col)
