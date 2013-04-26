@@ -10,7 +10,9 @@ keywords:cocos2d-x;ccgui;gui system;mygui;cegui
 contact:
 email: 370283593@qq.com
 
-
+update:
+2013-4-26
+(1)Implement the MultiListBox.We had implement the ItemBox which like ListBox,but we won't implement MultiItemBox furthur.
 
 
 
