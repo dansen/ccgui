@@ -51,16 +51,23 @@ bool AppDelegate::applicationDidFinishLaunching()
         list->addItem("hello");
     }
     
-    //list->setItemHeight(20);
-    list->setContentSize(CCSizeMake(200,200));
+    list->setItemHeight(30);
+    list->setContentSize(CCSizeMake(300,300));
     list->setPosition(CCPointMake(size.width/2, size.height/2));
     //
     CCGUI::TextBox * text = CCGUI::TextBox::create("hello world");
-    text->setPosition(CCPointMake(size.width/2+200, size.height/2));
+    text->setPosition(CCPointMake(size.width/2+400, size.height/2));
+    //
+    CCGUI::MultiListBox * multiList = CCGUI::MultiListBox::create("multilist", 2, 2);
+    multiList->setPosition(CCPointMake(size.width/2-300, size.height/2));
     
+    multiList->setItem("hifsd", 0, 0);
+    root->addWidget(multiList);
     root->addWidget(text);
     root->addWidget(list);
     
+    multiList->addColumn("head", 150);
+    multiList->addRow();
     
     CCDirector::sharedDirector()->runWithScene(scene);
     return true;

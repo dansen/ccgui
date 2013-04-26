@@ -63,6 +63,11 @@ void ListBox::setContentSize(const cocos2d::CCSize &contentSize)
 {
     m_itemSize = CCSizeMake(contentSize.width, m_itemSize.height);
     ScrollView::setContentSize(contentSize);
+    //update boxes's width
+    for(ITEMS_ITR itr = m_items.begin(); itr != m_items.end(); ++itr){
+        (*itr)->setContentSize(CCSizeMake(m_itemSize.width, m_itemSize.height));
+    }
+    //
     updateCanvas();
 }
 
@@ -76,6 +81,9 @@ void ListBox::addItem(std::string item)
 {
     TextBox * box = TextBox::create(item);
     box->setText(item.c_str());
+    //calculate the position
+    box->setContentSize(m_itemSize);
+    box->setPosition(CCPointMake(0, m_itemSize.height*(m_items.size())));
     //canvas自成一家，正常使用
     m_canvas->addWidget(box);
     m_items.push_back(box);
@@ -83,9 +91,7 @@ void ListBox::addItem(std::string item)
     //data ok,then graphic
     //update canvas size
     updateCanvas();
-    //calculate the position
-    box->setContentSize(m_itemSize);
-    box->setPosition(CCPointMake(0, m_itemSize.height*(m_items.size()-1)));
+    
 }
 
 void ListBox::removeItem(int index)
