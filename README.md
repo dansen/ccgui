@@ -1,3 +1,7 @@
+I'm sorry for having no time to maintain this source code for now. I hope someday I can keep coding for this souce code 
+to make it more elegant.
+
+
 ccgui
 =====
 
